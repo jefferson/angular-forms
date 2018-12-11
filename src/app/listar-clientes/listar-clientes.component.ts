@@ -2,19 +2,13 @@ import {Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatAutocompleteSelectedEvent, MatAutocompleteTrigger,
-    MatChipInputEvent, MatSelectionList, ErrorStateMatcher} from '@angular/material';
+    MatChipInputEvent, MatSelectionList} from '@angular/material';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import { DOWN_ARROW, TAB, ESCAPE } from '@angular/cdk/keycodes';
-import {FormControl, Validators, FormGroup, FormBuilder, FormGroupDirective, NgForm} from '@angular/forms';
+import {FormControl, Validators, FormGroup, FormBuilder} from '@angular/forms';
 
 /** Error when invalid control is dirty, touched, or submitted. */
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return isSubmitted;
-  }
-}
 
 @Component({
   selector: 'app-listar-clientes',
@@ -41,7 +35,6 @@ export class ListarClientesComponent implements OnInit {
 
   error: any = {};
   regiForm: FormGroup;
-  matcher = new MyErrorStateMatcher();
 
   ngOnInit() {
 
